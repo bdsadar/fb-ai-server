@@ -32,24 +32,30 @@ const conversations = {};
 export default async function handler(req, res) {
 
   // GET — Webhook verification by Facebook
-if (req.method === "GET") {
-  const mode = req.query["hub.mode"];
-  const token = req.query["hub.verify_token"];
-  const challenge = req.query["hub.challenge"];
+export default async function handler(req, res) {
+  if (req.method === "GET") {
+    const url = new URL(req.url, `https://${req.headers.host}`);
 
-  console.log({
-    mode,
-    token,
-    expected: VERIFY_TOKEN,
-    challenge
-  });
+    const mode = url.searchParams.get("hub.mode");
+    const token = url.searchParams.get("hub.verify_token");
+    const challenge = url.searchParams.get("hub.challenge");
 
-  if (mode === "subscribe" && token === VERIFY_TOKEN) {
-    console.log("Webhook verified ✓");
-    return res.status(200).send(challenge);
+    console.log({
+      url: req.url,
+      mode,
+      token,
+      challenge,
+      expected: process.env.VERIFY_TOKEN
+    });
+
+    if (mode === "subscribe" && token === process.env.VERIFY_TOKEN) {
+      return res.status(200).send(challenge);
+    }
+
+    return res.status(403).send("Forbidden");
   }
 
-  return res.status(403).send("Forbidden");
+  // POST handler...
 }
  
 

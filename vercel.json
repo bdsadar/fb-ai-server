@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "/webhook",      "dest": "/api/webhook.js" },
+    { "src": "/api/chat",     "dest": "/api/chat.js"    },
+    { "src": "/api/orders",   "dest": "/api/orders.js"  },
+    { "src": "/api/products", "dest": "/api/products.js"},
+    { "src": "/api/settings", "dest": "/api/settings.js"},
+    { "src": "/(.*)",         "dest": "/public/$1"      }
+  ]
+}

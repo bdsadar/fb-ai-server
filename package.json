@@ -1,0 +1,16 @@
+{
+  "name": "fb-ai-messenger-server",
+  "version": "1.0.0",
+  "description": "Facebook Messenger AI Agent — COD Bangladesh",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node api/webhook.js",
+    "start": "node api/webhook.js"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}

@@ -42,13 +42,7 @@ export default async function handler(req, res) {
       return res.status(200).send(challenge);
     }
     return res.status(403).send("Forbidden");
-    console.log({
-  mode: req.query["hub.mode"],
-  token: req.query["hub.verify_token"],
-  challenge: req.query["hub.challenge"],
-  expected: process.env.VERIFY_TOKEN,
-});
-  }
+    }
  
 
   // POST — Incoming message event
